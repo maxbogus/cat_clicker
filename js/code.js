@@ -1,3 +1,5 @@
-$('#my-elem').click(function (e) {
-    //the element has been clicked... do stuff here
+$('#cat_image').click(function (e) {
+    var number = $('#number').text();
+    console.log(number);
+    $('#number').text(parseInt(number) + 1);
 });
