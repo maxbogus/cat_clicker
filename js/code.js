@@ -31,6 +31,19 @@ $('#cat_image_2').click(function (e) {
     $('#number_2').text(parseInt(number) + 1);
 });
 
+// current cat
+// 0. print [0] cat from array cats
+// 1. print name
+// 2. print image
+// 3. print clicks
+// 4. check if user clicked on current cat
+// 5. updated current cat clicks
+// list of cats
+// 0. print list of cats from array of cats
+// 1. highlight current cat. if any
+// 2. check if user clicked on item from list of cats
+// 3. replace current cat with selected cat
+
 // // clear the screen for testing
 // document.body.innerHTML = '';
 //
