@@ -20,15 +20,17 @@ var cats = [{
     'clicks': '0'
 }];
 
-$('#cat_image_1').click(function (e) {
-    var number = $('#number_1').text();
+$('body').append('<div class="active"></div>');
+$('div.active').append('<figure></figure>');
+$('div.active figure').append('<img class="active" src="' + cats[0]['picture'] + '">');
+$('div.active figure').append('<figcaption>Cat ' + cats[0]['name'] + '.Clicks: ' + '<span class="active">' + cats[0]['clicks'] + '</span></figcaption>');
+
+$('body').append('<ul class="list"></ul>');
+
+$('img.active').click(function (e) {
+    var number = $('span.active').text();
     console.log(number);
-    $('#number_1').text(parseInt(number) + 1);
-});
-$('#cat_image_2').click(function (e) {
-    var number = $('#number_2').text();
-    console.log(number);
-    $('#number_2').text(parseInt(number) + 1);
+    $('span.active').text(parseInt(number) + 1);
 });
 
 // current cat
@@ -38,6 +40,7 @@ $('#cat_image_2').click(function (e) {
 // 3. print clicks
 // 4. check if user clicked on current cat
 // 5. updated current cat clicks
+
 // list of cats
 // 0. print list of cats from array of cats
 // 1. highlight current cat. if any
