@@ -18,7 +18,7 @@ var cats = [{
     'name': 'Phillip',
     'picture': 'img/cat_5.jpg',
     'clicks': '0'
-}];
+}], len, i;
 
 $('body').append('<div class="active"></div>');
 $('div.active').append('<figure></figure>');
@@ -32,6 +32,12 @@ $('img.active').click(function (e) {
     console.log(number);
     $('span.active').text(parseInt(number) + 1);
 });
+
+for (len = cats.length, i = 0; i < len; i++) {
+    $('ul.list').append('<li><figure></figure></li>');
+    $('ul.list figure:last').append('<img width="100" src="' + cats[i]['picture'] + '">');
+    $('ul.list figure:last').append('<figcaption>Cat ' + cats[i]['name'] + '.Clicks: ' + '<span class="active">' + cats[i]['clicks'] + '</span></figcaption>');
+}
 
 // current cat
 // 0. print [0] cat from array cats
