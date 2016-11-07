@@ -1,23 +1,23 @@
 var cats = [{
     'name': 'Alisa',
     'picture': 'img/cat_1.jpg',
-    'clicks': '0'
+    'clicks': 0
 }, {
     'name': 'Boris',
     'picture': 'img/cat_2.jpg',
-    'clicks': '0'
+    'clicks': 0
 }, {
     'name': 'Marusya and Teresa',
     'picture': 'img/cat_3.jpg',
-    'clicks': '0'
+    'clicks': 0
 }, {
     'name': 'Ball',
     'picture': 'img/cat_4.jpg',
-    'clicks': '0'
+    'clicks': 0
 }, {
     'name': 'Phillip',
     'picture': 'img/cat_5.jpg',
-    'clicks': '0'
+    'clicks': 0
 }], len, i;
 
 $('body').append('<div class="active"></div>');
@@ -28,15 +28,15 @@ $('div.active figure').append('<figcaption>Cat ' + cats[0]['name'] + '.Clicks: '
 $('body').append('<ul class="list"></ul>');
 
 $('img.active').click(function (e) {
-    var number = $('span.active').text();
-    console.log(number);
-    $('span.active').text(parseInt(number) + 1);
+    cats[0]['clicks'] = cats[0]['clicks'] + 1;
+    $('span.active').text(cats[0]['clicks']);
+    console.log(cats[0]['clicks']);
 });
 
 for (len = cats.length, i = 0; i < len; i++) {
     $('ul.list').append('<li><figure></figure></li>');
     $('ul.list figure:last').append('<img width="100" src="' + cats[i]['picture'] + '">');
-    $('ul.list figure:last').append('<figcaption>Cat ' + cats[i]['name'] + '.Clicks: ' + '<span class="active">' + cats[i]['clicks'] + '</span></figcaption>');
+    $('ul.list figure:last').append('<figcaption>Cat ' + cats[i]['name'] + '.Clicks: ' + '<span">' + cats[i]['clicks'] + '</span></figcaption>');
 }
 
 // current cat
