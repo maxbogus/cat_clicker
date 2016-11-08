@@ -49,3 +49,8 @@ for (len = cats.length, i = 0; i < len; i++) {
     img.prependTo($(elem));
     clicks.appendTo($(elem));
 }
+
+//TODO:
+// 1. add active cat
+// 2. change active cat if cat in list was clicked
+// 3. add listener for active cat
