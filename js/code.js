@@ -35,7 +35,7 @@ for (len = cats.length, i = 0; i < len; i++) {
 
     var clicks = $('<span>', {class: cat['name']});
 
-    elem.textContent = cat['name'] + ' Clicks: ';
+    elem.textContent = 'Name: ' + cat['name'] + '. Clicks: ';
 
     elem.addEventListener('click', (function (catCopy) {
         return function () {
