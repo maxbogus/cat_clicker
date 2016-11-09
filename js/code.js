@@ -22,6 +22,17 @@ var cats = [{
 
 document.body.innerHTML = '';
 
+$('body').append('<div id="active"><img src="'
+    + cats[0]['picture'] + '"><span class="active">'
+    + cats[0]['clicks'] + '</span></div>');
+
+$('div#active').click(function (e) {
+    var number = $('span.active').text();
+    console.log(number);
+    $('span.active').text(parseInt(number) + 1);
+});
+
+
 for (len = cats.length, i = 0; i < len; i++) {
     var cat = cats[i];
     var elem = document.createElement('div');
