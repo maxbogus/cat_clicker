@@ -62,6 +62,7 @@ for (len = cats.length, i = 0; i < len; i++) {
 }
 
 //TODO:
-// 1. add active cat
-// 2. change active cat if cat in list was clicked
-// 3. add listener for active cat
+// 1. add active cat from list. get number from element name and store it in active element
+// 2. replace all values in active cat from element
+// 3. replace cats with menu in the upper section
+// 4. create bigger picture of cat and store it in center.
