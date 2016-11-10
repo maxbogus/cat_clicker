@@ -27,9 +27,9 @@ $('body').append('<div id="active"><img src="'
     + cats[0]['clicks'] + '</span></div>');
 
 $('div#active').click(function (e) {
-    var number = $('span.active').text();
+    var number = cats[0]['clicks'] + 1;
     console.log(number);
-    $('span.active').text(parseInt(number) + 1);
+    $('span.active').text(number);
 });
 
 
