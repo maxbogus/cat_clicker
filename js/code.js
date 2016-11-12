@@ -22,24 +22,14 @@ var cats = [{
 
 current = cats[0];
 
-$('body').append('<div id="active"><img src="'
-    + current['picture'] + '"><span id="name">' + current['name'] + '</span><span id="clicks" class="active">'
-    + current['clicks'] + '</span></div>');
-
 for (len = cats.length, i = 0; i < len; i++) {
     var cat = cats[i];
     var elem = document.createElement('div');
-
-    var img = $('<img />',
-        {
-            id: cat['name'],
-            src: cat['picture'],
-            width: 100
-        });
+    elem.className = 'list';
 
     var clicks = $('<span>', {class: cat['name']});
 
-    elem.textContent = 'Name: ' + cat['name'] + '. Clicks: ' + cat['clicks'];
+    elem.textContent = cat['name'];
 
     elem.addEventListener('click', (function (catCopy) {
         return function () {
@@ -54,17 +44,17 @@ for (len = cats.length, i = 0; i < len; i++) {
     })(cat));
 
     document.body.appendChild(elem);
-    // img.prependTo($(elem));
+
     clicks.appendTo($(elem));
 }
+
+$('body').append('<div id="active"><figure><img src="'
+    + current['picture'] + '"><figcaption><span id="name">Name: '
+    + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
+    + current['clicks'] + '</span></figcaption></figure></div>');
 
 $('div#active').click(function (e) {
     current['clicks'] = current['clicks'] + 1;
     console.log(current['clicks']);
     $('span.active').text(current['clicks']);
 });
-
-//TODO:
-// 1. place elements from menu in line
-// 2. refresh elements in menu
-// 3. replace text with caption
