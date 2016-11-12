@@ -63,3 +63,8 @@ $('div#active').click(function (e) {
     console.log(current['clicks']);
     $('span.active').text(current['clicks']);
 });
+
+//TODO:
+// 1. place elements from menu in line
+// 2. refresh elements in menu
+// 3. replace text with caption
