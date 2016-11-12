@@ -20,18 +20,11 @@ var cats = [{
     'clicks': 0
 }], len, i;
 
-document.body.innerHTML = '';
+current = cats[0];
 
 $('body').append('<div id="active"><img src="'
-    + cats[0]['picture'] + '"><span class="active">'
-    + cats[0]['clicks'] + '</span></div>');
-
-$('div#active').click(function (e) {
-    var number = cats[0]['clicks'] + 1;
-    console.log(number);
-    $('span.active').text(number);
-});
-
+    + current['picture'] + '"><span id="name">' + current['name'] + '</span><span id="clicks" class="active">'
+    + current['clicks'] + '</span></div>');
 
 for (len = cats.length, i = 0; i < len; i++) {
     var cat = cats[i];
@@ -41,28 +34,32 @@ for (len = cats.length, i = 0; i < len; i++) {
         {
             id: cat['name'],
             src: cat['picture'],
-            width: 300
+            width: 100
         });
 
     var clicks = $('<span>', {class: cat['name']});
 
-    elem.textContent = 'Name: ' + cat['name'] + '. Clicks: ';
+    elem.textContent = 'Name: ' + cat['name'] + '. Clicks: ' + cat['clicks'];
 
     elem.addEventListener('click', (function (catCopy) {
         return function () {
-            catCopy['clicks'] = catCopy['clicks'] + 1;
-            $('span.' + catCopy['name']).text(catCopy['clicks']);
+            current = catCopy;
+            console.log(catCopy);
+            $('div#active img').attr('src', current['picture']);
+            $('div#active span#clicks').text(current['clicks']);
+            $('div#active span#name').text(current['name']);
             console.log(catCopy['clicks']);
+            $("div#active").hide().fadeIn('fast');
         };
     })(cat));
 
     document.body.appendChild(elem);
-    img.prependTo($(elem));
+    // img.prependTo($(elem));
     clicks.appendTo($(elem));
 }
 
-//TODO:
-// 1. add active cat from list. get number from element name and store it in active element
-// 2. replace all values in active cat from element
-// 3. replace cats with menu in the upper section
-// 4. create bigger picture of cat and store it in center.
+$('div#active').click(function (e) {
+    current['clicks'] = current['clicks'] + 1;
+    console.log(current['clicks']);
+    $('span.active').text(current['clicks']);
+});
