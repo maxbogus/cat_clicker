@@ -18,6 +18,10 @@ var cats = [{
     'name': 'Phillip',
     'picture': 'img/cat_5.jpg',
     'clicks': 0
+}, {
+    'name': 'Max',
+    'picture': 'img/cat_6.jpg',
+    'clicks': 0
 }], len, i;
 
 current = cats[0];
