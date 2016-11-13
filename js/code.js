@@ -64,10 +64,12 @@ $('div#active').click(function (e) {
 });
 
 //TODO:
-// 1. separate model and view:
+// 0. create working draft for mvc
+// 1. separate model, controls and view:
 // a. model - cats var
 // b. view - controls and clicks, render
 // c. octopus - init, interaction between view and model
+// 2. move everything to correct parts of mvc
 
 // Project Requirements for Cat Clicker Premium
 // Visuals
