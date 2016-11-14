@@ -104,3 +104,71 @@ JSON.parse(localStorage.cats).forEach(function (cat) {
 // Interaction
 // When a cat name is clicked in the list, the cat display area should update to show the data for the selected cat.
 //    The number of clicks in the cat area should be unique to each cat, and should increment when the cat's picture is clicked.
+
+
+//Reference:
+// $(function () {
+//
+//     var model = {
+//         init: function () {
+//             if (!localStorage.notes) {
+//                 localStorage.notes = JSON.stringify([]);
+//             }
+//         },
+//         add: function (obj) {
+//             var data = JSON.parse(localStorage.notes);
+//             data.push(obj);
+//             localStorage.notes = JSON.stringify(data);
+//         },
+//         getAllNotes: function () {
+//             return JSON.parse(localStorage.notes);
+//         }
+//     };
+//
+//
+//     var octopus = {
+//         addNewNote: function (noteStr) {
+//             model.add({
+//                 content: noteStr,
+//                 date: new Date().toLocaleDateString("en-US")
+//             });
+//             view.render();
+//         },
+//
+//         getNotes: function () {
+//             return model.getAllNotes().reverse();
+//         },
+//
+//         init: function () {
+//             model.init();
+//             view.init();
+//         }
+//     };
+//
+//
+//     var view = {
+//         init: function () {
+//             this.noteList = $('#notes');
+//             var newNoteForm = $('#new-note-form');
+//             var newNoteContent = $('#new-note-content');
+//             newNoteForm.submit(function (e) {
+//                 octopus.addNewNote(newNoteContent.val());
+//                 newNoteContent.val('');
+//                 e.preventDefault();
+//             });
+//             view.render();
+//         },
+//         render: function () {
+//             var htmlStr = '';
+//             octopus.getNotes().forEach(function (note) {
+//                 console.log(note.date);
+//                 htmlStr += '<li class="note"><span class="note-date">' + note.date + '</span>' +
+//                     note.content +
+//                     '</li>';
+//             });
+//             this.noteList.html(htmlStr);
+//         }
+//     };
+//
+//     octopus.init();
+// });
