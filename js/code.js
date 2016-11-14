@@ -29,19 +29,34 @@ $(function () {
                     'clicks': 0
                 }]);
             }
+            current = (JSON.parse(localStorage.cats))[0];
         }
     };
 
     var octopus = {
         init: function () {
             model.init();
+            view.init();
+
+            $('div#active').click(function (e) {
+                current['clicks'] = current['clicks'] + 1;
+                console.log(current['clicks']);
+                $('span.active').text(current['clicks']);
+            });
+        }
+    };
+
+    var view = {
+        init: function () {
+            $('body').append('<div id="active"><figure><img src="'
+                + current['picture'] + '"><figcaption><span id="name">Name: '
+                + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
+                + current['clicks'] + '</span></figcaption></figure></div>');
         }
     };
 
     octopus.init();
 });
-
-current = localStorage.cats[0];
 
 JSON.parse(localStorage.cats).forEach(function (cat) {
     var elem = document.createElement('div');
@@ -66,17 +81,6 @@ JSON.parse(localStorage.cats).forEach(function (cat) {
     document.body.appendChild(elem);
 
     clicks.appendTo($(elem));
-});
-
-$('body').append('<div id="active"><figure><img src="'
-    + current['picture'] + '"><figcaption><span id="name">Name: '
-    + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
-    + current['clicks'] + '</span></figcaption></figure></div>');
-
-$('div#active').click(function (e) {
-    current['clicks'] = current['clicks'] + 1;
-    console.log(current['clicks']);
-    $('span.active').text(current['clicks']);
 });
 
 //TODO:
