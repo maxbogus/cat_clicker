@@ -1,33 +1,49 @@
-var cats = [{
-    'name': 'Alisa',
-    'picture': 'img/cat_1.jpg',
-    'clicks': 0
-}, {
-    'name': 'Boris',
-    'picture': 'img/cat_2.jpg',
-    'clicks': 0
-}, {
-    'name': 'Twins',
-    'picture': 'img/cat_3.jpg',
-    'clicks': 0
-}, {
-    'name': 'Ball',
-    'picture': 'img/cat_4.jpg',
-    'clicks': 0
-}, {
-    'name': 'Phillip',
-    'picture': 'img/cat_5.jpg',
-    'clicks': 0
-}, {
-    'name': 'Max',
-    'picture': 'img/cat_6.jpg',
-    'clicks': 0
-}], len, i;
+$(function () {
 
-current = cats[0];
+    var model = {
+        init: function () {
+            if (!localStorage.cats) {
+                localStorage.cats = JSON.stringify([{
+                    'name': 'Alisa',
+                    'picture': 'img/cat_1.jpg',
+                    'clicks': 0
+                }, {
+                    'name': 'Boris',
+                    'picture': 'img/cat_2.jpg',
+                    'clicks': 0
+                }, {
+                    'name': 'Twins',
+                    'picture': 'img/cat_3.jpg',
+                    'clicks': 0
+                }, {
+                    'name': 'Ball',
+                    'picture': 'img/cat_4.jpg',
+                    'clicks': 0
+                }, {
+                    'name': 'Phillip',
+                    'picture': 'img/cat_5.jpg',
+                    'clicks': 0
+                }, {
+                    'name': 'Max',
+                    'picture': 'img/cat_6.jpg',
+                    'clicks': 0
+                }]);
+            }
+        }
+    };
 
-for (len = cats.length, i = 0; i < len; i++) {
-    var cat = cats[i];
+    var octopus = {
+        init: function () {
+            model.init();
+        }
+    };
+
+    octopus.init();
+});
+
+current = localStorage.cats[0];
+
+JSON.parse(localStorage.cats).forEach(function (cat) {
     var elem = document.createElement('div');
     elem.className = 'list';
 
@@ -50,7 +66,7 @@ for (len = cats.length, i = 0; i < len; i++) {
     document.body.appendChild(elem);
 
     clicks.appendTo($(elem));
-}
+});
 
 $('body').append('<div id="active"><figure><img src="'
     + current['picture'] + '"><figcaption><span id="name">Name: '
@@ -64,9 +80,7 @@ $('div#active').click(function (e) {
 });
 
 //TODO:
-// 0. create working draft for mvc
 // 1. separate model, controls and view:
-// a. model - cats var
 // b. view - controls and clicks, render
 // c. octopus - init, interaction between view and model
 // 2. move everything to correct parts of mvc
