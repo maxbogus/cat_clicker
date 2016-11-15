@@ -29,7 +29,10 @@ $(function () {
                     'clicks': 0
                 }]);
             }
-            current = (JSON.parse(localStorage.cats))[0];
+            current = model.getCats()[0];
+        },
+        getCats: function () {
+            return JSON.parse(localStorage.cats);
         }
     };
 
@@ -52,35 +55,34 @@ $(function () {
                 + current['picture'] + '"><figcaption><span id="name">Name: '
                 + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
                 + current['clicks'] + '</span></figcaption></figure></div>');
+            model.getCats().forEach(function (cat) {
+                var elem = document.createElement('div');
+                elem.className = 'list';
+
+                var clicks = $('<span>', {class: cat['name']});
+
+                elem.textContent = cat['name'];
+
+                elem.addEventListener('click', (function (catCopy) {
+                    return function () {
+                        current = catCopy;
+                        console.log(catCopy);
+                        $('div#active img').attr('src', current['picture']);
+                        $('div#active span#clicks').text(current['clicks']);
+                        $('div#active span#name').text(current['name']);
+                        console.log(catCopy['clicks']);
+                        $("div#active").hide().fadeIn('fast');
+                    };
+                })(cat));
+
+                document.body.appendChild(elem);
+
+                clicks.appendTo($(elem));
+            });
         }
     };
 
     octopus.init();
-});
-
-JSON.parse(localStorage.cats).forEach(function (cat) {
-    var elem = document.createElement('div');
-    elem.className = 'list';
-
-    var clicks = $('<span>', {class: cat['name']});
-
-    elem.textContent = cat['name'];
-
-    elem.addEventListener('click', (function (catCopy) {
-        return function () {
-            current = catCopy;
-            console.log(catCopy);
-            $('div#active img').attr('src', current['picture']);
-            $('div#active span#clicks').text(current['clicks']);
-            $('div#active span#name').text(current['name']);
-            console.log(catCopy['clicks']);
-            $("div#active").hide().fadeIn('fast');
-        };
-    })(cat));
-
-    document.body.appendChild(elem);
-
-    clicks.appendTo($(elem));
 });
 
 //TODO:
