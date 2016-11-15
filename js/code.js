@@ -66,11 +66,9 @@ $(function () {
                 elem.addEventListener('click', (function (catCopy) {
                     return function () {
                         current = catCopy;
-                        console.log(catCopy);
                         $('div#active img').attr('src', current['picture']);
                         $('div#active span#clicks').text(current['clicks']);
                         $('div#active span#name').text(current['name']);
-                        console.log(catCopy['clicks']);
                         $("div#active").hide().fadeIn('fast');
                     };
                 })(cat));
