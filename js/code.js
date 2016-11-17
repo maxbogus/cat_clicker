@@ -93,26 +93,11 @@ $(function () {
 });
 
 //TODO:
-// 1. separate model, controls and view:
-// b. view - controls and clicks, render
-// c. octopus - init, interaction between view and model
-// 2. move everything to correct parts of mvc
-
-// Project Requirements for Cat Clicker Premium
-// Visuals
-//The application should display
-// a list of cats by name
-// an area to display the selected cat
-
-// In the cat display area, the following should be displayed
-// the cat's name
-// a picture of the cat
-// text showing the number of clicks
-
-// The specifics of the layout do not matter, so style it however you'd like.
-// Interaction
-// When a cat name is clicked in the list, the cat display area should update to show the data for the selected cat.
-//    The number of clicks in the cat area should be unique to each cat, and should increment when the cat's picture is clicked.
+// 1. create render function in view
+// 2. replace current cat in model
+// 3. use current cat from model
+// 4. use separate methods to create event listeners
+// 5. use separate methods to create view elements.
 
 
 //Reference:
