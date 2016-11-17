@@ -33,6 +33,9 @@ $(function () {
         },
         getCats: function () {
             return JSON.parse(localStorage.cats);
+        },
+        getCurrent: function () {
+            return current;
         }
     };
 
@@ -40,12 +43,12 @@ $(function () {
         init: function () {
             model.init();
             view.init();
-
-            $('div#active').click(function (e) {
-                current['clicks'] = current['clicks'] + 1;
-                console.log(current['clicks']);
-                $('span.active').text(current['clicks']);
-            });
+        },
+        getCats: function () {
+            return model.getCats();
+        },
+        getCurrent: function () {
+            return model.current;
         }
     };
 
@@ -55,7 +58,13 @@ $(function () {
                 + current['picture'] + '"><figcaption><span id="name">Name: '
                 + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
                 + current['clicks'] + '</span></figcaption></figure></div>');
-            model.getCats().forEach(function (cat) {
+            $('div#active').click(function (e) {
+                current['clicks'] = current['clicks'] + 1;
+                console.log(current['clicks']);
+                $('span.active').text(current['clicks']);
+            });
+
+            octopus.getCats().forEach(function (cat) {
                 var elem = document.createElement('div');
                 elem.className = 'list';
 
