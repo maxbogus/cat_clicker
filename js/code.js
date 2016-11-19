@@ -2,40 +2,41 @@ $(function () {
 
     var model = {
         init: function () {
-            if (!localStorage.cats) {
-                localStorage.cats = JSON.stringify([{
-                    'name': 'Alisa',
-                    'picture': 'img/cat_1.jpg',
-                    'clicks': 0
-                }, {
-                    'name': 'Boris',
-                    'picture': 'img/cat_2.jpg',
-                    'clicks': 0
-                }, {
-                    'name': 'Twins',
-                    'picture': 'img/cat_3.jpg',
-                    'clicks': 0
-                }, {
-                    'name': 'Ball',
-                    'picture': 'img/cat_4.jpg',
-                    'clicks': 0
-                }, {
-                    'name': 'Phillip',
-                    'picture': 'img/cat_5.jpg',
-                    'clicks': 0
-                }, {
-                    'name': 'Max',
-                    'picture': 'img/cat_6.jpg',
-                    'clicks': 0
-                }]);
-            }
-            current = model.getCats()[0];
+            cats = [{
+                'name': 'Alisa',
+                'picture': 'img/cat_1.jpg',
+                'clicks': 0
+            }, {
+                'name': 'Boris',
+                'picture': 'img/cat_2.jpg',
+                'clicks': 0
+            }, {
+                'name': 'Twins',
+                'picture': 'img/cat_3.jpg',
+                'clicks': 0
+            }, {
+                'name': 'Ball',
+                'picture': 'img/cat_4.jpg',
+                'clicks': 0
+            }, {
+                'name': 'Phillip',
+                'picture': 'img/cat_5.jpg',
+                'clicks': 0
+            }, {
+                'name': 'Max',
+                'picture': 'img/cat_6.jpg',
+                'clicks': 0
+            }];
+            current = cats[0];
         },
         getCats: function () {
-            return JSON.parse(localStorage.cats);
+            return cats;
         },
         getCurrent: function () {
             return current;
+        },
+        setCurrent: function (obj) {
+            current = obj;
         }
     };
 
@@ -48,7 +49,10 @@ $(function () {
             return model.getCats();
         },
         getCurrent: function () {
-            return model.current;
+            return model.getCurrent();
+        },
+        setCurrent: function (obj) {
+            model.setCurrent(obj);
         }
     };
 
