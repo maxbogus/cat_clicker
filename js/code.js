@@ -100,11 +100,12 @@ $(function () {
 });
 
 //TODO:
-// 1. create render function in view
-// 2. replace current cat in model
-// 3. use current cat from model
-// 4. use separate methods to create event listeners
-// 5. use separate methods to create view elements.
+// 1. draw interactions on paper
+// 2. create and store view elements with jQuery
+// 3. access cats and current with octopus
+// 4. store and replace current with octopus
+// 5. draw view elements with jQuery
+// 6. set listeners with jQuery
 
 
 //Reference:
