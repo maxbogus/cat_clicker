@@ -64,7 +64,7 @@ $(function () {
                 + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
                 + current['clicks'] + '</span></figcaption></figure></div>');
 
-            $('div#active').click(function (e) {
+            $('div#active').click(function () {
                 current['clicks'] = current['clicks'] + 1;
                 console.log(current['clicks']);
                 $('span.active').text(current['clicks']);
@@ -74,9 +74,6 @@ $(function () {
             octopus.getCats().forEach(function (cat) {
                 var elem = document.createElement('div');
                 elem.className = 'list';
-
-                var clicks = $('<span>', {class: cat['name']});
-
                 elem.textContent = cat['name'];
 
                 elem.addEventListener('click', (function (catCopy) {
@@ -90,8 +87,6 @@ $(function () {
                 })(cat));
 
                 document.body.appendChild(elem);
-
-                clicks.appendTo($(elem));
             });
         }
     };
