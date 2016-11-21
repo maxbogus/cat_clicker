@@ -99,13 +99,12 @@ $(function () {
     octopus.init();
 });
 
-//TODO:
-// 1. draw interactions on paper
-// 2. create and store view elements with jQuery
-// 3. access cats and current with octopus
-// 4. store and replace current with octopus
-// 5. draw view elements with jQuery
-// 6. set listeners with jQuery
+//TODO: 1. draw interactions on paper
+//TODO: 2. create and store view elements with jQuery
+//TODO: 3. access cats and current with octopus
+//TODO: 4. store and replace current with octopus
+//TODO: 5. draw view elements with jQuery
+//TODO: 6. set listeners with jQuery
 
 
 //Reference:
