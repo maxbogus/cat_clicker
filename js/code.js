@@ -59,16 +59,19 @@ $(function () {
     var view = {
         activeDivEvent: function () {
             $('div#active').click(function () {
-                current['clicks'] = current['clicks'] + 1;
-                console.log(current['clicks']);
-                $('span.active').text(current['clicks']);
+                var currentCat = octopus.getCurrent();
+                currentCat['clicks'] = currentCat['clicks'] + 1;
+                console.log(currentCat['clicks']);
+                $('span.active').text(currentCat['clicks']);
+                octopus.setCurrent(currentCat);
             });
         }, init: function () {
             view.render();
+            var currentCat = octopus.getCurrent();
             $('body').append('<div id="active"><figure><img src="'
-                + current['picture'] + '"><figcaption><span id="name">Name: '
-                + current['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
-                + current['clicks'] + '</span></figcaption></figure></div>');
+                + currentCat['picture'] + '"><figcaption><span id="name">Name: '
+                + currentCat['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
+                + currentCat['clicks'] + '</span></figcaption></figure></div>');
             this.activeDivEvent();
         },
         render: function () {
@@ -79,10 +82,11 @@ $(function () {
 
                 elem.addEventListener('click', (function (catCopy) {
                     return function () {
-                        current = catCopy;
-                        $('div#active img').attr('src', current['picture']);
-                        $('div#active span#clicks').text(current['clicks']);
-                        $('div#active span#name').text(current['name']);
+                        octopus.setCurrent(catCopy);
+                        var currentCat = octopus.getCurrent();
+                        $('div#active img').attr('src', currentCat['picture']);
+                        $('div#active span#clicks').text(currentCat['clicks']);
+                        $('div#active span#name').text(currentCat['name']);
                         $('div#active').hide().fadeIn('fast');
                     };
                 })(cat));
@@ -94,9 +98,3 @@ $(function () {
 
     octopus.init();
 });
-
-//TODO: 1. draw interactions on paper
-//TODO: 2. create and store view elements with jQuery
-//TODO: 3. access cats and current with octopus
-//TODO: 4. store and replace current with octopus
-//TODO: 5. draw view elements with jQuery
