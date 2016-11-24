@@ -110,3 +110,4 @@ $(function () {
 //TODO: admin area with inputs for changing the cat's name, url, and number of clicks (hidden by default)
 //TODO: When the cancel button in the admin area is pressed, the admin area disappears.
 //TODO: When the save button in the admin area is pressed, the currently-selected cat's values update with the values in the admin area, and the admin area disappears.
+//TODO: Add CSS rules so you could view app on mobile
