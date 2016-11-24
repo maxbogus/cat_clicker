@@ -1,97 +1,103 @@
 $(function () {
 
     var model = {
-        init: function () {
-            cats = [{
-                'name': 'Alisa',
-                'picture': 'img/cat_1.jpg',
-                'clicks': 0
-            }, {
-                'name': 'Boris',
-                'picture': 'img/cat_2.jpg',
-                'clicks': 0
-            }, {
-                'name': 'Twins',
-                'picture': 'img/cat_3.jpg',
-                'clicks': 0
-            }, {
-                'name': 'Ball',
-                'picture': 'img/cat_4.jpg',
-                'clicks': 0
-            }, {
-                'name': 'Phillip',
-                'picture': 'img/cat_5.jpg',
-                'clicks': 0
-            }, {
-                'name': 'Max',
-                'picture': 'img/cat_6.jpg',
-                'clicks': 0
-            }];
-            current = cats[0];
-        },
-        getCats: function () {
-            return cats;
-        },
-        getCurrent: function () {
-            return current;
-        },
-        setCurrent: function (obj) {
-            current = obj;
-        }
+        cats: [{
+            name: 'Alisa',
+            picture: 'img/cat_1.jpg',
+            clicks: 0
+        }, {
+            name: 'Boris',
+            picture: 'img/cat_2.jpg',
+            clicks: 0
+        }, {
+            name: 'Twins',
+            picture: 'img/cat_3.jpg',
+            clicks: 0
+        }, {
+            name: 'Ball',
+            picture: 'img/cat_4.jpg',
+            clicks: 0
+        }, {
+            name: 'Phillip',
+            picture: 'img/cat_5.jpg',
+            clicks: 0
+        }, {
+            name: 'Max',
+            picture: 'img/cat_6.jpg',
+            clicks: 0
+        }],
+        current: null
     };
 
     var octopus = {
         init: function () {
-            model.init();
-            view.init();
+            model.current = model.cats[0];
+            catView.init();
+            menuView.init();
         },
         getCats: function () {
-            return model.getCats();
+            return model.cats;
         },
         getCurrent: function () {
-            return model.getCurrent();
+            return model.current;
         },
         setCurrent: function (obj) {
-            model.setCurrent(obj);
+            model.current = obj;
+        },
+        incrementCounter: function () {
+            model.current.clicks++;
+            catView.render()
         }
     };
 
-    var view = {
-        activeDivEvent: function () {
-            $('div#active').click(function () {
-                var currentCat = octopus.getCurrent();
-                currentCat['clicks'] = currentCat['clicks'] + 1;
-                console.log(currentCat['clicks']);
-                $('span.active').text(currentCat['clicks']);
-                octopus.setCurrent(currentCat);
+    var catView = {
+        init: function () {
+            this.catName = $('#name');
+            this.catImage = $('#cat-img');
+            this.catClicks = $('#clicks');
+
+            this.catImage.click(function () {
+                octopus.incrementCounter();
             });
-        }, init: function () {
-            view.render();
+
+            catView.render();
+        }, render: function () {
             var currentCat = octopus.getCurrent();
-            $('body').append('<div id="active"><figure><img src="'
-                + currentCat['picture'] + '"><figcaption><span id="name">Name: '
-                + currentCat['name'] + '</span><br> Clicks: <span id="clicks" class="active">'
-                + currentCat['clicks'] + '</span></figcaption></figure></div>');
-            this.activeDivEvent();
+            this.catClicks.text('Clicks: ' + currentCat.clicks);
+            this.catImage.attr('src', currentCat.picture);
+            this.catName.text(currentCat.name);
+        }
+    };
+
+    var menuView = {
+        init: function () {
+            catList = document.getElementById('cat-list');
+
+            this.render();
         },
         render: function () {
-            octopus.getCats().forEach(function (cat) {
-                var elem = document.createElement('div');
-                elem.className = 'list';
-                elem.textContent = cat['name'];
+            var elem;
+            // empty the cat list
+            catList.innerHTML = '';
 
+            // loop over the cats
+            octopus.getCats().forEach(function (cat) {
+                // make a new cat list item and set its text
+                elem = document.createElement('li');
+                elem.textContent = cat.name;
+
+                // on click, setCurrentCat and render the catView
+                // (this uses our closure-in-a-loop trick to connect the value
+                //  of the cat variable to the click event function)
                 elem.addEventListener('click', (function (catCopy) {
                     return function () {
                         octopus.setCurrent(catCopy);
-                        var currentCat = octopus.getCurrent();
-                        $('div#active img').attr('src', currentCat['picture']);
-                        $('div#active span#clicks').text(currentCat['clicks']);
-                        $('div#active span#name').text(currentCat['name']);
-                        $('div#active').hide().fadeIn('fast');
+                        catView.render();
                     };
                 })(cat));
 
-                document.body.appendChild(elem);
+                // finally, add the element to the list
+                catList.appendChild(elem);
             });
         }
     };
