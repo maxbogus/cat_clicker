@@ -34,6 +34,7 @@ $(function () {
             model.current = model.cats[0];
             catView.init();
             menuView.init();
+            adminView.init();
         },
         getCats: function () {
             return model.cats;
@@ -102,11 +103,35 @@ $(function () {
         }
     };
 
+    var adminView = {
+        init: function () {
+            adminButton = $('#admin_button');
+            adminMenu = $('#admin_menu');
+            adminCancel = $('#admin_cancel');
+
+            this.render();
+        },
+        render: function () {
+            this.hideMenu();
+
+            adminButton.click(function () {
+                if (adminMenu.is(":visible")) {
+                    adminMenu.hide();
+                } else {
+                    adminMenu.show();
+                }
+
+            });
+        },
+        hideMenu: function () {
+            adminMenu.hide();
+        }
+    };
+
     octopus.init();
 });
 
 // required:
-//TODO: hide admin area by default
 //TODO: When the cancel button in the admin area is pressed, the admin area disappears.
 //TODO: When the save button in the admin area is pressed, the currently-selected cat's values update with the values in the admin area, and the admin area disappears.
 // optional:

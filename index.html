@@ -11,25 +11,27 @@
     <link rel='shortcut icon' href='img/favicon.png' type='image/x-icon'>
 </head>
 <body>
-<ul id="cat-list"></ul>
-<div id="active">
-    <figure>
-        <img id="cat-img" src="" alt="cute cat">
-        <figcaption>
-            <span id="name"></span><br>
-            <span id="clicks"></span>
-        </figcaption>
-    </figure>
-</div>
-<div id="admin">
-    <input type="button" name="admin" value="Admin">
-    <form id="admin_menu">
-        <input type="text" name="name" title="name">
-        <input type="text" name="img" title="img">
-        <input type="text" name="clicks" title="clicks">
-        <input type="button" name="admin_cancel" value="Cancel">
-        <input type="submit" name="admin_submit" value="Submit">
-    </form>
+<div class="container">
+    <ul id="cat-list"></ul>
+    <div id="active">
+        <figure>
+            <img id="cat-img" src="" alt="cute cat">
+            <figcaption>
+                <span id="name"></span><br>
+                <span id="clicks"></span>
+            </figcaption>
+        </figure>
+    </div>
+    <div id="admin">
+        <input id='admin_button' type="button" name="admin" value="Admin">
+        <form id="admin_menu">
+            <input type="text" name="name" title="name">
+            <input type="text" name="img" title="img">
+            <input type="text" name="clicks" title="clicks">
+            <input id='admin_cancel' type="button" name="admin_cancel" value="Cancel">
+            <input type="submit" name="admin_submit" value="Submit">
+        </form>
+    </div>
 </div>
 <script src="js/code.js"></script>
 </body>
