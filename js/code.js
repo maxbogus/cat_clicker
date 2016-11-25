@@ -105,9 +105,15 @@ $(function () {
     octopus.init();
 });
 
-//TODO: remake menuView to jQuery
-//TODO: add admin button
-//TODO: admin area with inputs for changing the cat's name, url, and number of clicks (hidden by default)
+// required:
+//TODO: hide admin area by default
 //TODO: When the cancel button in the admin area is pressed, the admin area disappears.
 //TODO: When the save button in the admin area is pressed, the currently-selected cat's values update with the values in the admin area, and the admin area disappears.
+// optional:
+//TODO: remake menuView to jQuery
+//TODO: octopus should call render passing to it required data
+//TODO: octopus should be subscribed to the events in vew
+//TODO: one event listener on parent view of child li's
+// desired:
 //TODO: Add CSS rules so you could view app on mobile
+//TODO: data could be stored in data-id instead of closure
