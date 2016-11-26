@@ -26,7 +26,8 @@ $(function () {
             picture: 'img/cat_6.jpg',
             clicks: 0
         }],
-        current: null
+        current: null,
+        adminMode: false
     };
 
     var octopus = {
@@ -48,6 +49,12 @@ $(function () {
         incrementCounter: function () {
             model.current.clicks++;
             catView.render()
+        },
+        getAdminType: function () {
+            return model.adminMode;
+        },
+        setAdminType: function (type) {
+            model.adminMode = type;
         }
     };
 
@@ -112,7 +119,9 @@ $(function () {
             this.render();
         },
         render: function () {
-            this.hideMenu();
+            if (!octopus.getAdminType()) {
+                this.hideMenu();
+            }
 
             adminButton.click(function () {
                 if (adminMenu.is(":visible")) {
@@ -120,7 +129,11 @@ $(function () {
                 } else {
                     adminMenu.show();
                 }
+            });
 
+            adminCancel.click(function () {
+                octopus.setAdminType(false);
+                adminView.render();
             });
         },
         hideMenu: function () {
@@ -132,8 +145,10 @@ $(function () {
 });
 
 // required:
-//TODO: When the cancel button in the admin area is pressed, the admin area disappears.
-//TODO: When the save button in the admin area is pressed, the currently-selected cat's values update with the values in the admin area, and the admin area disappears.
+//TODO: Get current values in edit field when admin is opened
+//TODO: Save current values to current cat when save is pressed
+//TODO: Update current cat view when Save was pressed
+//TODO: Refresh values on Cancel
 // optional:
 //TODO: remake menuView to jQuery
 //TODO: octopus should call render passing to it required data
