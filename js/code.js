@@ -155,18 +155,20 @@ $(function () {
     octopus.init();
 });
 
-// required:
-//TODO: Save current values to current cat when save is pressed
-//TODO: Update current cat view when Save was pressed
-//TODO: Refresh values on Cancel
-//FIXME: Cancel breaks Admin button
-//TODO: Update or close admin panel on click on cat
-//TODO: Update or close admin panel on click on cat_list
-// optional:
-//TODO: remake menuView to jQuery
-//TODO: octopus should call render passing to it required data
-//TODO: octopus should be subscribed to the events in vew
-//TODO: one event listener on parent view of child li's
-// desired:
-//TODO: Add CSS rules so you could view app on mobile
-//TODO: data could be stored in data-id instead of closure
+/*
+ required:
+ TODO: Save current values to current cat when save is pressed
+ TODO: Update current cat view when Save was pressed
+ TODO: Refresh values on Cancel
+ FIXME: Cancel breaks Admin button
+ TODO: Update or close admin panel on click on cat
+ TODO: Update or close admin panel on click on cat_list
+ optional:
+ TODO: remake menuView to jQuery
+ TODO: octopus should call render passing to it required data
+ TODO: octopus should be subscribed to the events in vew
+ TODO: one event listener on parent view of child li's
+ desired:
+ TODO: Add CSS rules so you could view app on mobile
+ TODO: data could be stored in data-id instead of closure
+ */
