@@ -115,13 +115,24 @@ $(function () {
             adminButton = $('#admin_button');
             adminMenu = $('#admin_menu');
             adminCancel = $('#admin_cancel');
+            adminSubmit = $('#admin_submit');
+
+            inputText = $('input#text');
+            inputImg = $('input#img');
+            inputClick = $('input#click');
 
             this.render();
         },
         render: function () {
-            if (!octopus.getAdminType()) {
+            if (octopus.getAdminType() === false) {
                 this.hideMenu();
             }
+
+            var currentCat = octopus.getCurrent();
+
+            inputText.attr('value', currentCat['name']);
+            inputImg.attr('value', currentCat['picture']);
+            inputClick.attr('value', currentCat['clicks']);
 
             adminButton.click(function () {
                 if (adminMenu.is(":visible")) {
@@ -145,10 +156,12 @@ $(function () {
 });
 
 // required:
-//TODO: Get current values in edit field when admin is opened
 //TODO: Save current values to current cat when save is pressed
 //TODO: Update current cat view when Save was pressed
 //TODO: Refresh values on Cancel
+//FIXME: Cancel breaks Admin button
+//TODO: Update or close admin panel on click on cat
+//TODO: Update or close admin panel on click on cat_list
 // optional:
 //TODO: remake menuView to jQuery
 //TODO: octopus should call render passing to it required data
