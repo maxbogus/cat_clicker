@@ -143,8 +143,17 @@ $(function () {
             });
 
             adminCancel.click(function () {
-                octopus.setAdminType(false);
-                adminView.render();
+                adminMenu.hide();
+            });
+
+            adminSubmit.click(function () {
+                currentCat['name'] = inputText.val();
+                currentCat['img'] = inputImg.val();
+                currentCat['clicks'] = inputClick.val();
+                console.log(currentCat);
+                octopus.setCurrent(currentCat);
+                adminMenu.hide();
+                catView.render();
             });
         },
         hideMenu: function () {
@@ -157,8 +166,6 @@ $(function () {
 
 /*
  required:
- TODO: Save current values to current cat when save is pressed
- TODO: Update current cat view when Save was pressed
  TODO: Refresh values on Cancel
  FIXME: Cancel breaks Admin button
  TODO: Update or close admin panel on click on cat
