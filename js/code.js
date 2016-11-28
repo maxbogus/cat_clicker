@@ -167,7 +167,7 @@ $(function () {
 /*
  required:
  TODO: Refresh values on Cancel
- FIXME: Cancel breaks Admin button
+ TODO: Save current cat to cats
  TODO: Update or close admin panel on click on cat
  TODO: Update or close admin panel on click on cat_list
  optional:
