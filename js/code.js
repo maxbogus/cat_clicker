@@ -52,9 +52,6 @@ $(function () {
         },
         getAdminType: function () {
             return model.adminMode;
-        },
-        setAdminType: function (type) {
-            model.adminMode = type;
         }
     };
 
