@@ -131,14 +131,14 @@ $(function () {
 
         return {
             init: function () {
-                $adminButton = $('#admin_button');
-                $adminMenu = $('#admin_menu');
-                $adminCancel = $('#admin_cancel');
-                $adminSubmit = $('#admin_submit');
+                $adminButton = $("#admin_button");
+                $adminMenu = $("#admin_menu");
+                $adminCancel = $("#admin_cancel");
+                $adminSubmit = $("#admin_submit");
 
-                $inputText = $('input#text');
-                $inputImg = $('input#img');
-                $inputClick = $('input#click');
+                $inputText = $("input#text");
+                $inputImg = $("input#img");
+                $inputClick = $("input#click");
 
                 currentCat = octopus.getCurrent();
 
@@ -170,9 +170,9 @@ $(function () {
 
                 this.render();
             }, render: function () {
-                $inputText.attr('value', currentCat.name);
-                $inputImg.attr('value', currentCat.picture);
-                $inputClick.attr('value', currentCat.clicks);
+                $inputText.attr("value", currentCat.name);
+                $inputImg.attr("value", currentCat.picture);
+                $inputClick.attr("value", currentCat.clicks);
             },
             hideMenu: function () {
                 $adminMenu.hide();
