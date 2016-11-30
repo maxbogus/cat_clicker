@@ -103,12 +103,12 @@ $(function () {
                 // on click, setCurrentCat and render the catView
                 // (this uses our closure-in-a-loop trick to connect the value
                 //  of the cat variable to the click event function)
-                elem.addEventListener("click", (function (catCopy) {
+                elem.addEventListener("click", function (catCopy) {
                     return function () {
                         octopus.setCurrent(catCopy);
                         catView.render();
                     };
-                })(cat));
+                }(cat));
 
                 // finally, add the element to the list
                 catList.appendChild(elem);
@@ -118,14 +118,14 @@ $(function () {
 
     var adminView = {
         init: function () {
-            adminButton = $('#admin_button');
-            adminMenu = $('#admin_menu');
-            adminCancel = $('#admin_cancel');
-            adminSubmit = $('#admin_submit');
+            adminButton = $("#admin_button");
+            adminMenu = $("#admin_menu");
+            adminCancel = $("#admin_cancel");
+            adminSubmit = $("#admin_submit");
 
-            inputText = $('input#text');
-            inputImg = $('input#img');
-            inputClick = $('input#click');
+            inputText = $("input#text");
+            inputImg = $("input#img");
+            inputClick = $("input#click");
 
             this.render();
         },
@@ -136,9 +136,9 @@ $(function () {
 
             var currentCat = octopus.getCurrent();
 
-            inputText.attr('value', currentCat['name']);
-            inputImg.attr('value', currentCat['picture']);
-            inputClick.attr('value', currentCat['clicks']);
+            inputText.attr("value", currentCat.name);
+            inputImg.attr("value", currentCat.picture);
+            inputClick.attr("value", currentCat.clicks);
 
             adminButton.click(function () {
                 if (adminMenu.is(":visible")) {
@@ -153,9 +153,9 @@ $(function () {
             });
 
             adminSubmit.click(function () {
-                currentCat['name'] = inputText.val();
-                currentCat['img'] = inputImg.val();
-                currentCat['clicks'] = inputClick.val();
+                currentCat["name"] = inputText.val();
+                currentCat["img"] = inputImg.val();
+                currentCat["clicks"] = inputClick.val();
                 console.log(currentCat);
                 octopus.setCurrent(currentCat);
                 adminMenu.hide();
