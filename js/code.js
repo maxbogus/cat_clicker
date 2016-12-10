@@ -165,7 +165,7 @@ $(function () {
                     currentCat.img = $inputImg.val();
                     currentCat.clicks = $inputClick.val();
                     $adminMenu.hide();
-                    catView.init();
+                    catView.render();
                 });
 
                 this.render();
