@@ -162,7 +162,7 @@ $(function () {
                 $adminSubmit.on("click", function () {
                     currentCat = octopus.getCurrent();
                     currentCat.name = $inputText.val();
-                    currentCat.img = $inputImg.val();
+                    currentCat.picture = $inputImg.val();
                     currentCat.clicks = $inputClick.val();
                     $adminMenu.hide();
                     catView.render();
