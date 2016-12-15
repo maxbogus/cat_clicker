@@ -12,13 +12,13 @@
 <body>
 <div class="container">
     <div id="active">
-        <figure>
-            <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}">
+        <figure data-bind="with: currentCat">
+            <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
             <figcaption>
-                <span data-bind="text: currentCat().name"></span><br>
-                <span data-bind="text: currentCat().title"></span><br>
-                <span data-bind="text: currentCat().clickCount"></span>
-                <ul data-bind="foreach: currentCat().nickNames">
+                <span data-bind="text: name"></span><br>
+                <span data-bind="text: title"></span><br>
+                <span data-bind="text: clickCount"></span>
+                <ul data-bind="foreach: nickNames">
                     <li data-bind="text: $data"></li>
                 </ul>
             </figcaption>
