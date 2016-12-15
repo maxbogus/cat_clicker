@@ -5,37 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <title>Cat clicker</title>
     <link rel='shortcut icon' href='img/favicon.png' type='image/x-icon'>
 </head>
 <body>
 <div class="container">
-    <ul id="cat-list"></ul>
     <div id="active">
         <figure>
-            <img id="cat-img" src="" alt="cute cat">
+            <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: imgSrc}">
             <figcaption>
-                <span id="name"></span><br>
-                <span id="clicks"></span>
+                <span data-bind="text: name"></span><br>
+                <span data-bind="text: currentLevel"></span><br>
+                <span data-bind="text: clickCount"></span>
             </figcaption>
         </figure>
     </div>
-    <div id="admin">
-        <input id='admin_button' type="button" name="admin" value="Admin">
-        <div id="admin_menu">
-            <label>Name</label>
-            <input id='text' type="text" name="name" title="name" value=""><br>
-            <label>Img</label>
-            <input id='img' type="text" name="img" title="img" value=""><br>
-            <label>Clicks</label>
-            <input id='click' type="text" name="clicks" title="clicks" value=""><br>
-            <input id='admin_cancel' type="button" name="admin_cancel" value="Cancel">
-            <input id='admin_submit' type="submit" name="admin_submit" value="Submit">
-        </div>
-    </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type='text/javascript' src='js/knockout.js'></script>
 <script src="js/code.js"></script>
 </body>
 </html>
