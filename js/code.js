@@ -132,6 +132,7 @@ var ViewModel = function () {
 
     this.incrementCounter = function () {
         self.currentCat().clickCount(self.currentCat().clickCount() + 1);
+        self.currentCat().clickCount.commit();
     };
 };
 
