@@ -28,9 +28,13 @@
         </figure>
     </div>
     <div id="admin-panel">
-        <input id='admin_button' type="button" name="admin" value="Admin" data-bind="click: showAdminForm">
-        <form data-bind="visible: isAdminFormEnabled">
-            <p>hello</p>
+        <button data-bind="click: showAdminForm">Admin</button>
+        <form data-bind="visible: isAdminFormEnabled, submit: showAdminForm, with: currentCat">
+            <p>Name: <input data-bind="value: name"/></p>
+            <p>Click count: <input data-bind="value: clickCount"/></p>
+
+            <button data-bind="click: $parent.showAdminForm">Cancel</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </div>

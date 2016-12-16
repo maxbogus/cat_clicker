@@ -99,8 +99,3 @@ var ViewModel = function () {
 };
 
 ko.applyBindings(new ViewModel());
-
-//TODO: add form
-//TODO: show current params of current cat in form
-//TODO: cancel and save change state of admin button
-//TODO: save saves state to current cat.
