@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <ul class="list" data-bind="foreach: catList">
-        <li data-bind="text: $data.name"></li>
+        <li data-bind="text: $data.name, click: $parent.selectCurrentCat"></li>
     </ul>
     <div id="active">
         <figure data-bind="with: currentCat">

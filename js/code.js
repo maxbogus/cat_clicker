@@ -72,6 +72,10 @@ var ViewModel = function () {
     var self = this;
     this.catList = ko.observableArray([]);
 
+    this.selectCurrentCat = function() {
+        self.currentCat(this);
+    };
+
     initialCats.forEach(function (catItem) {
         self.catList.push(new Cat(catItem))
     });
