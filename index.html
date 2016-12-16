@@ -11,6 +11,9 @@
 </head>
 <body>
 <div class="container">
+    <ul class="list" data-bind="foreach: catList">
+        <li data-bind="text: $data.name"></li>
+    </ul>
     <div id="active">
         <figure data-bind="with: currentCat">
             <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
@@ -18,7 +21,7 @@
                 <span data-bind="text: name"></span><br>
                 <span data-bind="text: title"></span><br>
                 <span data-bind="text: clickCount"></span>
-                <ul data-bind="foreach: nickNames">
+                <ul class="list" data-bind="foreach: nickNames">
                     <li data-bind="text: $data"></li>
                 </ul>
             </figcaption>

@@ -340,7 +340,7 @@ a:hover {
     }
 }
 
-#cat-list li {
+.list li {
     display: inline;
     margin-right: 20px;
 }
