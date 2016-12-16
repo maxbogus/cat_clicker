@@ -72,7 +72,18 @@ var ViewModel = function () {
     var self = this;
     this.catList = ko.observableArray([]);
 
-    this.selectCurrentCat = function() {
+    this.isAdminFormEnabled = ko.observable(false);
+
+    this.showAdminForm = function () {
+        var currentState = this.isAdminFormEnabled();
+        if (currentState === true) {
+            this.isAdminFormEnabled(false);
+        } else {
+            this.isAdminFormEnabled(true);
+        }
+    };
+
+    this.selectCurrentCat = function () {
         self.currentCat(this);
     };
 
@@ -89,4 +100,7 @@ var ViewModel = function () {
 
 ko.applyBindings(new ViewModel());
 
-//TODO: add admin panel.
+//TODO: add form
+//TODO: show current params of current cat in form
+//TODO: cancel and save change state of admin button
+//TODO: save saves state to current cat.
