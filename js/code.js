@@ -38,11 +38,20 @@ var initialCats = [
     }];
 
 var Cat = function (data) {
-    this.clickCount = ko.observable(data.clickCount);
-    this.name = ko.observable(data.name);
+    this.clickCount = ko.protectedObservable(data.clickCount);
+    this.name = ko.protectedObservable(data.name);
     this.imgSrc = ko.observable(data.imgSrc);
     this.imgAttribution = ko.observable(data.imgAttribution);
     this.nickNames = ko.observableArray(data.nicknames);
+
+    this.commitAll = function () {
+        this.name.commit();
+        this.clickCount.commit();
+    };
+    this.resetAll = function () {
+        this.name.reset();
+        this.clickCount.reset();
+    };
 
     this.title = ko.pureComputed(function () {
         var title;
@@ -66,6 +75,34 @@ var Cat = function (data) {
 
         return title;
     }, this);
+};
+
+ko.protectedObservable = function (initialValue) {
+    //private variables
+    var _temp = initialValue;
+    var _actual = ko.observable(initialValue);
+
+    var result = ko.dependentObservable({
+        read: _actual,
+        write: function (newValue) {
+            _temp = newValue;
+        }
+    }).extend({notify: "always"}); //needed in KO 3.0+ for reset, as computeds no longer notify when value is the same
+
+    //commit the temporary value to our observable, if it is different
+    result.commit = function () {
+        if (_temp !== _actual()) {
+            _actual(_temp);
+        }
+    };
+
+    //notify subscribers to update their value with the original
+    result.reset = function () {
+        _actual.valueHasMutated();
+        _temp = _actual();
+    };
+
+    return result;
 };
 
 var ViewModel = function () {

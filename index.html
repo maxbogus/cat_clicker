@@ -32,9 +32,8 @@
         <form data-bind="visible: isAdminFormEnabled, submit: showAdminForm, with: currentCat">
             <p>Name: <input data-bind="value: name"/></p>
             <p>Click count: <input data-bind="value: clickCount"/></p>
-
-            <button data-bind="click: $parent.showAdminForm">Cancel</button>
-            <button type="submit">Submit</button>
+            <button data-bind="click: commitAll">Save</button>
+            <button data-bind="click: resetAll">Cancel</button>
         </form>
     </div>
 </div>
